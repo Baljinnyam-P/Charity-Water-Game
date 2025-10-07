@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Well Builder - charity: water</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Title Screen with Hero Image -->
+  <div id="title-screen" class="screen active hero-bg">
+    <img src="images/hero2.jpg" alt="Smiling children drinking clean water" class="hero-image" />
+    <div class="hero-content">
+      <img src="images/logo.png" alt="charity: water logo" class="logo big-logo" />
+      <h1>Well Builder</h1>
+      <p class="how-to">Tap the Water Button to earn WaterCoins (WC). Play mini-games for bonus WC. Build wells and learn your impact!</p>
+      <button id="start-btn" class="cta">Start</button>
+    </div>
+  </div>
+
+  <!-- Main Game Screen -->
+  <div id="game-screen" class="screen">
+    <header class="site-header" role="banner">
+      <div class="brand">
+        <img src="images/logo.png" alt="charity: water logo" class="logo main-logo" />
+        <div class="brand-text">
+          <span class="brand-title">Well Builder</span>
+          <span class="brand-tagline">Build impact. One drop at a time.</span>
+        </div>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <ul>
+          <li><button class="nav-link" data-action="play">Play</button></li>
+          <li><button class="nav-link" data-action="milestones">Milestones</button></li>
+          <li><button class="nav-link" data-action="how">How It Works</button></li>
+          <li><a href="https://www.charitywater.org/donate" target="_blank" class="cta small">Donate</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="layout-split">
+        <section class="core-play">
+          <div class="well-progress"> 
+            <div class="progress-label">Well Progress</div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="progress-info"><span id="wc-count">0</span> / 1000 WC (<span id="progress-percent">0</span>%)</div>
+          </div>
+          <button id="water-btn" class="water-btn">
+            <img src="images/bigdrop.jpg" alt="Big Water Button" />
+            <span class="ripple"></span>
+          </button>
+          <div class="can-row" id="can-row">
+            <img src="images/jerrycan.png" alt="Collectible Can" class="can-img" tabindex="0" />
+            <img src="images/jerrycan.png" alt="Collectible Can" class="can-img" tabindex="0" />
+            <img src="images/jerrycan.png" alt="Collectible Can" class="can-img" tabindex="0" />
+          </div>
+          <button id="reset-btn" class="cta reset-btn">Reset</button>
+        </section>
+        <aside class="side-panels" aria-label="Impact and learning panels">
+          <div class="panel impact" id="impact-panel">
+            <h3 class="panel-title">Your Impact</h3>
+            <div class="radial-wrap" aria-hidden="true">
+              <svg class="radial" viewBox="0 0 120 120">
+                <circle class="radial-bg" cx="60" cy="60" r="52" />
+                <circle class="radial-fg" cx="60" cy="60" r="52" stroke-dasharray="326" stroke-dashoffset="326" />
+                <text x="60" y="64" text-anchor="middle" class="radial-text" id="radial-text">0%</text>
+              </svg>
+            </div>
+            <ul class="impact-stats" aria-live="polite">
+              <li><strong id="impact-wells">0</strong> wells built</li>
+              <li><strong id="impact-percent">0%</strong> current well progress</li>
+              <li><strong id="impact-remaining">1000</strong> WC to next well</li>
+              <li id="impact-next">Next milestone: 25% (250 WC to go)</li>
+            </ul>
+          </div>
+          <div class="panel fact" id="fact-panel">
+            <h3 class="panel-title">Did You Know?</h3>
+            <p id="rotating-fact">1 in 10 people lack access to clean water.</p>
+          </div>
+          <div class="panel goals" id="goals-panel">
+            <h3 class="panel-title">Milestones</h3>
+            <ol class="milestone-list" id="milestone-list">
+              <li data-m="25">25% – First big step</li>
+              <li data-m="50">50% – Halfway there</li>
+              <li data-m="75">75% – Almost flowing</li>
+              <li data-m="100">100% – Well complete!</li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+      <div class="mini-games">
+        <div class="mini-game-card" id="mini-water-quest">
+          <div class="icon-shape hex"><img src="images/quest.jpg" alt="Water Quest" /></div>
+          <div class="mini-title">Water Quest</div>
+        </div>
+        <div class="mini-game-card" id="mini-water-drop">
+          <div class="icon-shape circle"><img src="images/waterdrop.jpg" alt="Water Drop" /></div>
+          <div class="mini-title">Water Drop</div>
+        </div>
+        <div class="mini-game-card" id="mini-quiz">
+          <div class="icon-shape soft"><span class="mini-icon"><img src="images/quiz.jpg" alt="Water Drop" /></span></div>
+          <div class="mini-title">Micro Quiz</div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <img src="images/logo.png" alt="charity: water logo" class="footer-logo" />
+          <p class="footer-mission">100% of public donations fund clean water. Learn, play, and inspire real change.</p>
+        </div>
+        <div class="footer-links">
+          <h3 class="footer-heading">Explore</h3>
+          <ul>
+            <li><button class="footer-link" data-action="play">Play</button></li>
+            <li><button class="footer-link" data-action="milestones">Milestones</button></li>
+            <li><button class="footer-link" data-action="how">How It Works</button></li>
+          </ul>
+        </div>
+        <div class="footer-cta">
+          <h3 class="footer-heading">Take Action</h3>
+            <a href="https://www.charitywater.org/donate" target="_blank" class="cta">Donate</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Inspired by <a href="https://www.charitywater.org/" target="_blank">charity: water</a>. This is a educational mini‑game.</span>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- Modal Container -->
+  <div id="modal-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
