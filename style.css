@@ -160,25 +160,34 @@ header {
   margin-top: 0.2rem;
   color: var(--cw-navy);
 }
+/* Primary Water Button */
 .water-btn {
-  background: linear-gradient(135deg, var(--cw-blue) 80%, var(--cw-yellow) 100%);
+  background: radial-gradient(circle at 48% 38%, #0d4b78, #032843 78%);
   border: none;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   margin: 1.5rem 0 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,153,198,0.18);
+  box-shadow: 0 10px 28px -6px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.25);
   position: relative;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  isolation: isolate;
 }
-.water-btn img {
-  width: 70px;
-  height: 70px;
+.water-btn:hover { box-shadow:0 14px 34px -6px rgba(0,0,0,0.45), 0 3px 10px rgba(0,0,0,0.28); }
+.water-btn:active { transform: translateY(2px) scale(.97); }
+.water-btn .drop-icon {
+  width: 68%;
+  height: 68%;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.35)) drop-shadow(0 0 4px rgba(62,198,255,0.35));
+  transition: transform .4s cubic-bezier(.68,-0.4,.25,1.4);
 }
+.water-btn img { width:68%; height:68%; object-fit:contain; display:block; }
+.water-btn:active .drop-icon,
+.water-btn:focus-visible .drop-icon { transform: scale(.92); }
 .ripple {
   position: absolute;
   border-radius: 50%;
@@ -193,10 +202,10 @@ header {
   transition: width 0.4s, height 0.4s, opacity 0.4s;
 }
 .water-btn:active .ripple {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   opacity: 1;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.25s, height 0.25s, opacity 0.25s;
 }
 .mini-games {
   display: flex;
@@ -219,12 +228,13 @@ header {
 .mini-game-card:hover {
   box-shadow: 0 4px 16px rgba(0,51,102,0.13);
 }
-.mini-game-card img {
-  width: 38px;
-  height: 38px;
-  margin-bottom: 0.4rem;
-  filter: drop-shadow(0 1.5px 0 var(--cw-yellow));
+.mini-game-card img { 
+  
+  display:none; 
+  border-radius: 50%;
+
 }
+.mini-icon-svg { width: 46px; height: 46px; display:block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18)); }
 /* Icon Shape System */
 .icon-shape {
   width: 72px;
@@ -245,16 +255,18 @@ header {
 .icon-shape.soft { border-radius:42% 58% 55% 45% / 37% 40% 60% 63%; }
 .icon-shape::after { content:""; position:absolute; inset:0; border-radius:inherit; background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.65), transparent 60%); mix-blend-mode:overlay; pointer-events:none; }
 .icon-embossed { filter: drop-shadow(0 3px 4px rgba(0,0,0,0.15)) drop-shadow(0 0 0 #FFC907); }
-.icon-shape img, .icon-shape span { width:42px; height:42px; display:block; }
+.icon-shape img, .icon-shape span, .icon-shape .mini-icon-svg { width:42px; height:42px; display:block; }
 .icon-shape span { font-size:2rem; font-weight:700; color: var(--cw-blue); }
 
 /* Water Button Enhancement */
-.water-btn { position:relative; overflow:visible; }
-.water-btn::before, .water-btn::after { content:""; position:absolute; inset:-6px; border-radius:50%; background:radial-gradient(circle at 35% 35%, #ffe9a3, rgba(255,201,7,0.15) 60%, rgba(255,201,7,0) 70%); z-index:-1; opacity:0; animation: pulseRing 3.8s ease-in-out infinite; }
-.water-btn::after { animation-delay:1.9s; }
-@keyframes pulseRing { 0% { transform:scale(0.6); opacity:0.0;} 20% {opacity:0.55;} 55% {opacity:0.25;} 100% { transform:scale(1.35); opacity:0; } }
-.water-btn img { filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15)); }
-.water-btn:active { transform: translateY(2px); }
+/* Pulsing aura */
+.water-btn::before, .water-btn::after {
+  content:""; position:absolute; inset:-4px; border-radius:50%;
+  background:radial-gradient(circle at 32% 32%, rgba(255,201,7,0.55), rgba(255,201,7,0) 68%);
+  z-index:-1; opacity:0; animation: pulseRing 4s ease-in-out infinite;
+}
+.water-btn::after { animation-delay:2s; }
+@keyframes pulseRing { 0% { transform:scale(.55); opacity:0;} 20% {opacity:.55;} 55% {opacity:.22;} 100% { transform:scale(1.4); opacity:0;} }
 
 /* Modal / Result Icons Enhancement */
 .mini-game-result img, .milestone-popup img, .well-built img { filter: drop-shadow(0 4px 10px rgba(0,51,102,0.25)) drop-shadow(0 0 0 #FFC907); border-radius:1rem; background:#fffbe6; padding:0.6rem; }
@@ -316,14 +328,8 @@ footer {
     width: 31%;
     padding: 0.5rem 0.1rem 0.7rem 0.1rem;
   }
-  .water-btn {
-    width: 90px;
-    height: 90px;
-  }
-  .water-btn img {
-    width: 50px;
-    height: 50px;
-  }
+  .water-btn { width:110px; height:110px; }
+  .water-btn .drop-icon { width:72%; height:72%; }
   .can-img {
     width: 38px;
     height: 38px;

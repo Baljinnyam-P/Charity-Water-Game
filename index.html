@@ -48,9 +48,18 @@
             </div>
             <div class="progress-info"><span id="wc-count">0</span> / 1000 WC (<span id="progress-percent">0</span>%)</div>
           </div>
-          <button id="water-btn" class="water-btn">
-            <img src="images/bigdrop.jpg" alt="Big Water Button" />
+          <button id="water-btn" class="water-btn" aria-label="Add water">
+            <svg class="drop-icon" viewBox="0 0 64 64" role="img" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="wbGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3EC6FF" />
+                  <stop offset="100%" stop-color="#0077C8" />
+                </linearGradient>
+              </defs>
+              <path d="M32 4S14 30 14 42c0 10 8 18 18 18s18-8 18-18C50 30 32 4 32 4Z" fill="url(#wbGrad)" />
+            </svg>
             <span class="ripple"></span>
+            <noscript><img src="images/bigdrop.jpg" alt="Water" width="90" height="90" /></noscript>
           </button>
           <div class="can-row" id="can-row">
             <img src="images/jerrycan.png" alt="Collectible Can" class="can-img" tabindex="0" />
